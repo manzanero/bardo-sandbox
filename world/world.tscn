@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://bninka16p1tnl"]
+
+[ext_resource type="Script" path="res://world/world.gd" id="1_l0aqf"]
+[ext_resource type="Script" path="res://marching.gd" id="2_mywc5"]
+[ext_resource type="Script" path="res://world/camera.gd" id="2_nxa2l"]
+[ext_resource type="Material" uid="uid://djw0go5pw84xr" path="res://test_material.tres" id="4_f3jkq"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_dwjk7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_tdr4n"]
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_l0aqf")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+script = ExtResource("2_nxa2l")
+
+[node name="Camera3D" type="Camera3D" parent="Marker3D"]
+
+[node name="Cells" type="Node3D" parent="."]
+
+[node name="Marching" type="Node3D" parent="."]
+script = ExtResource("2_mywc5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Marching"]
+material_override = ExtResource("4_f3jkq")
+mesh = SubResource("ArrayMesh_dwjk7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.5, -0.224144, 0.836516, 0, 0.965926, 0.258819, -0.866025, -0.12941, 0.482963, 0, 10, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.91555, 2.13346, 15.5294)
+visible = false
+mesh = SubResource("BoxMesh_tdr4n")
